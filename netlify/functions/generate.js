@@ -1,6 +1,6 @@
 const openai = require('openai');
 
-openai.apiKey = process.env.OPENAI_API_KEY;
+const openai = new OpenAI(process.env.OPENAI_API_KEY);
 
 exports.handler = async function(event, context) {
     const data = JSON.parse(event.body);
