@@ -1,12 +1,12 @@
-const { OpenAi } = require('openai');
+const { OpenAiApi } = require('openai');
 
-const openai = new OpenAi(process.env.OPENAI_API_KEY);
+const openai = new OpenAiApi(process.env.OPENAI_API_KEY);
 
 exports.handler = async function(event, context) {
     const data = JSON.parse(event.body);
     const prompt = data.prompt;
 
-    const response = await openai.completions.create({
+    const response = await openai.createCompletion({
         engine: 'text-davinci-003',
         prompt: prompt,
         temperature: 0.9,
