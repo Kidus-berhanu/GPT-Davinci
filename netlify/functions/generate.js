@@ -1,24 +1,22 @@
-const openai = require('openai');
+const { OpenAI } = require('openai');
 
-
-
-const api = new openai.OpenAi(process.env.OPENAI_API_KEY);
+const openai = new OpenAI(process.env.OPENAI_API_KEY);
 
 exports.handler = async function(event, context) {
     const data = JSON.parse(event.body);
     const prompt = data.prompt;
 
-    const response = await api.Completion.create({
+    const response = await openai.completions.create({
         engine: 'text-davinci-003',
         prompt: prompt,
         temperature: 0.9,
-        max_tokens: 3000
+        max_tokens: 100
     });
 
     return {
         statusCode: 200,
         body: JSON.stringify({
-            generated_text: response.choices[0].text.strip()
+            generated_text: response.choices[0].text
         })
     };
 };
