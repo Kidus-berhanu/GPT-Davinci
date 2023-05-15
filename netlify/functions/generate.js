@@ -21,7 +21,7 @@ exports.handler = async function(event, context) {
     return {
       statusCode: 200,
       body: JSON.stringify({
-        generated_text: response.data.choices[0].text.strip()
+        generated_text: response.data.choices[0].text.trim()
       })
     };
   } catch (error) {
