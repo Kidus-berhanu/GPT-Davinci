@@ -15,7 +15,7 @@ exports.handler = async function(event, context) {
       model: 'text-davinci-003',
       prompt: prompt,
       temperature: 0.9,
-      max_tokens: 3000
+      max_tokens: 100
     });
 
     return {
