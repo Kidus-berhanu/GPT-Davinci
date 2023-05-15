@@ -1,4 +1,6 @@
 const openai = require('openai');
+const axios = require('axios');
+
 
 openai.apiKey = process.env.OPENAI_API_KEY;
 
