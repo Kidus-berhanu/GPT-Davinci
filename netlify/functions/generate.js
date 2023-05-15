@@ -6,7 +6,7 @@ exports.handler = async function(event, context) {
     const data = JSON.parse(event.body);
     const prompt = data.prompt;
 
-    const response = await openai.createCompletion({
+    const response = await openai.Completion.create({
         engine: 'text-davinci-003',
         prompt: prompt,
         temperature: 0.9,
