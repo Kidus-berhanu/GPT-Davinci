@@ -8,10 +8,30 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-bg-color: #a1c4fd;
+            --secondary-bg-color: #c2e9fb;
+            --text-color: #333;
+            --form-bg-color: #f2f2f2;
+            --box-shadow-color: rgba(0, 0, 0, 0.1);
+            --btn-bg-color: #3498db;
+            --btn-hover-bg-color: #2980b9;
+        }
+
+        .theme-dark {
+            --primary-bg-color: #222;
+            --secondary-bg-color: #111;
+            --text-color: #ddd;
+            --form-bg-color: #333;
+            --box-shadow-color: rgba(255, 255, 255, 0.1);
+            --btn-bg-color: #555;
+            --btn-hover-bg-color: #444;
+        }
+
         body {
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
-            color: #333;
+            background: linear-gradient(120deg, var(--primary-bg-color) 0%, var(--secondary-bg-color) 100%);
+            color: var(--text-color);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -20,13 +40,20 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         h1 {
             font-family: 'Playfair Display', serif;
             font-size: 3em;
             margin-bottom: 20px;
-            color: #29323c;
+        }
+
+        #theme-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
         }
 
         #form {
@@ -36,11 +63,12 @@
             height: 80vh;
             width: 80%;
             border-radius: 15px;
-            background: #f2f2f2;
-            box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.1);
+            background: var(--form-bg-color);
+            box-shadow: 0px 3px 16px 0px var(--box-shadow-color);
             padding: 20px;
             box-sizing: border-box;
             overflow-y: auto;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
         }
 
         #prompt, #result {
@@ -54,11 +82,12 @@
             border: none;
             background-color: #fff;
             border-radius: 5px;
-            box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 2px 5px 0px var(--box-shadow-color);
+            transition: box-shadow 0.3s ease, background 0.3s ease;
         }
 
         button {
-            background-color: #3498db;
+            background-color: var(--btn-bg-color);
             color: #fff;
             padding: 10px 20px;
             border: none;
@@ -66,22 +95,37 @@
             font-size: 1em;
             transition: background-color 0.3s ease;
             border-radius: 5px;
-            box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 2px 5px 0px var(--box-shadow-color);
         }
 
         button:hover {
-            background-color: #2980b9;
+            background-color: var(--btn-hover-bg-color);
         }
+
+        #word-count {
+            margin-bottom: 20px;
+        }
+
+        #font-size {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+        }
+
     </style>
 </head>
 <body>
-    <h1> GPT ONE undectable Essay Generator</h1>
+    <h1> GPT PLUS Undectable Essay Generator</h1>
+    <span id="theme-switch">Switch Theme</span>
     <form id="form">
         <div id="result">Your generated text will appear here...</div>
         <textarea id="prompt" placeholder="Enter your prompt here( say hi or ask to write any type of essay"></textarea>
+        <div id="word-count">Word count: 0</div>
         <button type="submit">Generate</button>
     </form>
+    <div id="font-size">Change font size</div>
 
     <script src="script.js"></script>
 </body>
 </html>
+
