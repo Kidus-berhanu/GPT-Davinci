@@ -1,17 +1,16 @@
-const { OpenAi, GPT3Client } = require('openai');
+const { OpenAi } = require('openai');
 
-// Initialize the client
 const openai = new OpenAi(process.env.OPENAI_API_KEY);
 
 exports.handler = async function(event, context) {
     const data = JSON.parse(event.body);
     const prompt = data.prompt;
 
-    const response = await openai.complete({
+    const response = await openai.completions.create({
         engine: 'text-davinci-003',
         prompt: prompt,
         temperature: 0.9,
-        maxTokens: 100
+        max_tokens: 100
     });
 
     return {
