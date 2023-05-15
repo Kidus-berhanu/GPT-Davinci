@@ -1,5 +1,5 @@
 const openai = require('openai');
-const axios = require('axios');
+
 
 
 const api = new openai.OpenAi(process.env.OPENAI_API_KEY);
@@ -12,7 +12,7 @@ exports.handler = async function(event, context) {
         engine: 'text-davinci-003',
         prompt: prompt,
         temperature: 0.9,
-        max_tokens: 100
+        max_tokens: 3000
     });
 
     return {
