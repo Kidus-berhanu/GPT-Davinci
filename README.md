@@ -1,1 +1,1 @@
-# GPTPLUS
+# GPT X
